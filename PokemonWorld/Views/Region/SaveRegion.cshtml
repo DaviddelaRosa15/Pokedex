@@ -1,0 +1,42 @@
+﻿@using Application.ViewModels.Region
+@model SaveRegionViewModel
+
+@{
+	bool editMode = Model.Id == 0 ? true : false;
+	ViewData["Title"] = "Crear/Editar Region";
+}
+<div class="card">
+	<div class="card-header bg-secondary p-2 rounded-2 text-light">
+		<h1>@(editMode ? "Creando una región" : $"Editando la región: {Model.Name}")</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="card-body">
+			<form method="post" asp-controller="Region" asp-action="@(editMode ? "Create" : "Edit")">
+
+				<input type="hidden" asp-for="Id" />
+
+				<div class="mb-3">
+					<label asp-for="Name" class="form-label">Nombre: </label>
+					<input type="text" asp-for="Name" class="form-control">
+					<span asp-validation-for="Name" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="Description" class="form-label">Descripcion: </label>
+					<textarea asp-for="Description" class="form-control"></textarea>
+					<span asp-validation-for="Description" class="text-danger"></span>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Guardar</button>
+				<a asp-controller="Region" asp-action="Index" class="btn btn-secondary">Volver</a>
+			</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	}

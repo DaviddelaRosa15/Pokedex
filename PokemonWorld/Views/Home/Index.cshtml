@@ -1,0 +1,114 @@
+﻿@using Application.ViewModels.Pokemon
+@using Application.ViewModels.Region
+@model List<PokemonViewModel>
+@{
+	ViewData["Title"] = "Home";
+}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-3">
+			<div class="card shadow-sm">
+				<div class="card-header fondoHeaderCard text-dark">
+					<h4>Filtros</h4>
+				</div>
+				<div class="card-body fondoContainerCard text-dark">
+					<h4 class="card-title">Regiones</h4>
+
+					<form method="post" asp-controller="Home" asp-action="Index">
+
+						<div class="mb-3">
+							<div class="form-check">
+								<input class="form-check-input fs-5" value="null" type="radio" name="RegionId" id="region-all" />
+								<label class="form-check-label fs-5" for="region-all">Todas</label>
+							</div>
+						</div>
+
+						@foreach (RegionViewModel region in ViewBag.Regions)
+						{
+							<div class="mb-3 justify-content-center">
+								<div class="form-check">
+									<input class="form-check-input fs-5" value="@region.Id" type="radio" name="RegionId" id="region-@region.Id" />
+									<label class="form-check-label fs-5" for="region-@region.Id">@region.Name</label>
+								</div>
+							</div>
+						}
+
+						<button type="submit" class="btn btn-primary">Filtrar</button>
+
+					</form>
+
+
+				</div>
+			</div>
+		</div>
+		<div class="col-9">
+			<div class="card mx-0">
+				<div class="card-header mb-0 fondoHeaderCard text-dark">
+					<h2 class="text-lg-center mb-2">!Encuentra el pokemon!</h2>
+					<form method="post" asp-controller="Home" asp-action="Index">
+						<div class="input-group mb-1">
+							<button type="submit" class="btn btn-outline-danger" onclick="reiniciarListado()">Mostrar todos</button>
+							<input type="search" class="form-control rounded" name="PokemonName" id="PokemonTxt" placeholder="¡Escribe el nombre del pokemon!" aria-label="¡Escribe el nombre del pokemon!" aria-describedby="search-addon" />
+							<button type="submit" class="btn btn-outline-success">Buscar</button>
+						</div>
+					</form>
+				</div>
+				@if (Model == null || Model.Count == 0)
+				{
+					<h3 class="text-lg-center mb-3">No hay registros de pokemones</h3>
+				}
+				else
+				{
+					<div class="card-body fondoContainerCard">
+						<div class="row">
+							@foreach (PokemonViewModel item in Model)
+							{
+								<div class="col-6 mb-3 card-sizing">
+									<div class="card shadow-sm card-sizing color-card mx-lg-2">
+										<img src="@item.Url" class="img-product-size bd-placeholder-img card-img-top " />
+
+										<div class="card-body">
+											<h3>@item.Name</h3>
+											<p class="card-text">@item.Description</p>
+										</div>
+										<ul class="list-group list-group-flush">
+											@if (item.SecondTypeName == " ")
+											{
+												<li class="list-group-item color-card">
+													<div class="d-flex justify-content-between align-items-center">
+														<small>Tipo: <span class="fw-bold">@item.FirstTypeName</span></small>
+													</div>
+												</li>
+											}
+											else
+											{
+												<li class="list-group-item color-card">
+													<div class="d-flex justify-content-between align-items-center">
+														<small>Tipos: <span class="fw-bold">@item.FirstTypeName</span>  -  <span class="fw-bold">@item.SecondTypeName</span></small>
+													</div>
+												</li>
+											}
+											<li class="list-group-item color-card">
+												<div class="d-flex justify-content-between align-items-center">
+													<small>Region: <span class="fw-bold">@item.RegionName</span></small>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							}
+						</div>
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	function reiniciarListado(){
+		var txtBusqueda = document.getElementById("PokemonTxt");
+		var texto = null;
+        document.getElementById("PokemonTxt").value = texto;
+	}
+</script>

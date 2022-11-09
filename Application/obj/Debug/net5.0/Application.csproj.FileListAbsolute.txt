@@ -1,0 +1,15 @@
+C:\Users\rlope\source\repos\Pokedex\Application\bin\Debug\net5.0\Application.deps.json
+C:\Users\rlope\source\repos\Pokedex\Application\bin\Debug\net5.0\Application.dll
+C:\Users\rlope\source\repos\Pokedex\Application\bin\Debug\net5.0\Application.pdb
+C:\Users\rlope\source\repos\Pokedex\Application\bin\Debug\net5.0\Database.dll
+C:\Users\rlope\source\repos\Pokedex\Application\bin\Debug\net5.0\Database.pdb
+C:\Users\rlope\source\repos\Pokedex\Application\obj\Debug\net5.0\Application.csproj.AssemblyReference.cache
+C:\Users\rlope\source\repos\Pokedex\Application\obj\Debug\net5.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rlope\source\repos\Pokedex\Application\obj\Debug\net5.0\Application.AssemblyInfoInputs.cache
+C:\Users\rlope\source\repos\Pokedex\Application\obj\Debug\net5.0\Application.AssemblyInfo.cs
+C:\Users\rlope\source\repos\Pokedex\Application\obj\Debug\net5.0\Application.csproj.CoreCompileInputs.cache
+C:\Users\rlope\source\repos\Pokedex\Application\obj\Debug\net5.0\Application.csproj.CopyComplete
+C:\Users\rlope\source\repos\Pokedex\Application\obj\Debug\net5.0\Application.dll
+C:\Users\rlope\source\repos\Pokedex\Application\obj\Debug\net5.0\refint\Application.dll
+C:\Users\rlope\source\repos\Pokedex\Application\obj\Debug\net5.0\Application.pdb
+C:\Users\rlope\source\repos\Pokedex\Application\obj\Debug\net5.0\ref\Application.dll

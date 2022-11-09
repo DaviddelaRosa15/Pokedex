@@ -1,0 +1,73 @@
+﻿@using Application.ViewModels.Pokemon
+@model List<PokemonViewModel>
+@{
+	ViewData["Title"] = "Pokemones";
+}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<div class="bg-primary p-2 rounded-2 mb-1">
+				<h1>Mantenimiento de Pokemones</h1>
+			</div>
+
+			<div class="row mb-2">
+				<div class="col-3">
+					<a asp-controller="Pokemon" asp-action="Create" class="btn btn-outline-danger">Crear Nuevo Pokemon</a>
+				</div>
+			</div>
+			<div class="card bg-transparent">				
+				@if (Model == null || Model.Count == 0)
+				{
+					<h3 class="text-lg-center mb-3">No hay pokemones</h3>
+				}
+				else
+				{
+					<div class="card-body fondoContainerCard">
+						<div class="row">
+							@foreach (PokemonViewModel item in Model)
+							{
+								<div class="col-4 mb-3">
+									<div class="card shadow-sm card-sizing color-card">
+										<img src="@item.Url" class="img-product-size bd-placeholder-img card-img-top " />
+
+										<div class="card-body">
+											<h3>@item.Name</h3>
+											<p class="card-text">@item.Description</p>
+										</div>
+										<ul class="list-group list-group-flush">
+											@if (item.SecondTypeName == " ")
+											{
+												<li class="list-group-item color-card">
+													<div class="d-flex justify-content-between align-items-center">
+														<small>Tipo: <span class="fw-bold">@item.FirstTypeName</span></small>
+													</div>
+												</li>
+											}
+											else
+											{
+												<li class="list-group-item color-card">
+													<div class="d-flex justify-content-between align-items-center">
+														<small>Tipos: <span class="fw-bold">@item.FirstTypeName</span>  -  <span class="fw-bold">@item.SecondTypeName</span></small>
+													</div>
+												</li>
+											}
+											<li class="list-group-item color-card">
+												<div class="d-flex justify-content-between align-items-center">
+													<small>Region: <span class="fw-bold">@item.RegionName</span></small>
+													<div class="btn-group">
+														<a asp-controller="Pokemon" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Editar</a>
+														<a asp-controller="Pokemon" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Borrar</a>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							}
+						</div>
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+</div>
